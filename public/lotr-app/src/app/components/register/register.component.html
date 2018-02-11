@@ -1,0 +1,69 @@
+<div class="container">
+<form (ngSubmit)="onSubmit()" #regForm = "ngForm">
+  <div class="card card-body">
+        
+        <div class="form-group">
+          <label>First Name:</label>
+          <input type="text"
+          name="fname" 
+          required
+          minlength = "2"
+          [ngClass] = "{'is-invalid' : fname.errors && fname.touched}"    
+          [(ngModel)] = "user.firstName"
+          #fname = "ngModel"
+          class="form-control">
+          <div *ngIf="fname.touched && fname.value == ''" class="input invalid-feedback">First Name required</div>
+          <div *ngIf="fname.touched && fname.errors?.minlength" class="invalid-feedback">First name should be atleast 2 characters</div>
+        </div>
+
+        <div class="form-group">
+            <label>Last Name:</label>
+            <input type="text" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="text" 
+            name="email"
+            required 
+            pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+            [ngClass]="{'is-invalid' : email.errors && email.touched}" 
+            [(ngModel)]="user.email" 
+            class="form-control" 
+            #email="ngModel">      <!-- name is required if using ngModel -->     
+            <div *ngIf="email.touched && email.value == ''" class="invalid-feedback">Email Required</div>
+            <div *ngIf="email.touched && email.errors?.pattern" class="invalid-feedback">Invalid Email</div>
+        </div>
+
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" 
+            name="password" 
+            required 
+            class="form-control"
+            minlength="6"
+            pattern=".*[0-9+].*"
+            [(ngModel)]="user.password"
+            #password="ngModel">
+
+            <div *ngIf = "password.value != ''">
+            <i [ngClass]="passTickClass1(password.hasError('minlength'),password.pristine,password.value)"></i><span>Minimum 6 characters</span>
+            <i [ngClass]="passTickClass2(password.hasError('pattern'),password.pristine,password.value)"></i><span>One numeric character</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Retype Password:</label>
+            <input type="password" 
+             name="rePassword"
+             required
+             class="form-control"
+             [(ngModel)]="rePassword"
+             #rePass="ngModel">
+             <div *ngIf="rePass.value != password.value && rePass.touched">Passwords don't match</div>
+        </div>
+
+        <button [disabled]="!regForm.form.valid" type="submit" class="btn btn-success">Submit</button>
+      </div>
+</form>
+</div>

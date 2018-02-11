@@ -1,0 +1,37 @@
+{
+  "name": "lotr-app",
+  "version": "1.0.0",
+  "description": "LOTR themed application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranaya94/Lord-Of-The-Rings-App.git"
+  },
+  "keywords": [
+    "lotr"
+  ],
+  "author": "Pranaya Tomar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pranaya94/Lord-Of-The-Rings-App.git/issues"
+  },
+  "homepage": "https://github.com/pranaya94/Lord-Of-The-Rings-App.git#readme",
+  "dependencies": {
+    "angular": "^1.6.8",
+    "angular-route": "^1.6.8",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "mongodb": "^3.0.1",
+    "mongoose": "^4.13.8",
+    "nodemon": "^1.14.12"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  }
+}
